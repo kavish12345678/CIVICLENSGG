@@ -82,19 +82,28 @@
 <button class="text-slate-800 dark:text-white" id="back-btn">
 <span class="material-symbols-outlined">arrow_back</span>
 </button>
-<h1 class="flex-1 text-center text-lg font-bold text-slate-900 dark:text-white pr-8">My Reports</h1>
+<h1 class="flex-1 text-center text-lg font-bold text-slate-900 dark:text-white pr-8" data-i18n-key="my_reports_title">My Reports</h1>
+<select data-lang-selector class="absolute right-4 top-4 rounded-full bg-background-dark/10 dark:bg-background-light/10 text-slate-800 dark:text-white text-xs px-2 py-1 border border-black/10 dark:border-white/10"></select>
 </div>
 <div class="flex gap-2 px-4 pb-3" id="filter-tabs">
-<button class="flex-1 rounded-full bg-primary px-4 py-2 text-sm font-medium text-white">All</button>
-<button class="flex-1 rounded-full bg-slate-200 dark:bg-slate-800 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300">In Progress</button>
-<button class="flex-1 rounded-full bg-slate-200 dark:bg-slate-800 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300">Resolved</button>
+<button class="flex-1 rounded-full bg-primary px-4 py-2 text-sm font-medium text-white" data-i18n-key="my_reports_all">All</button>
+<button class="flex-1 rounded-full bg-slate-200 dark:bg-slate-800 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n-key="my_reports_in_progress">In Progress</button>
+<button class="flex-1 rounded-full bg-slate-200 dark:bg-slate-800 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n-key="my_reports_resolved">Resolved</button>
 </div>
 </header>
 <main class="flex flex-col gap-3 p-4">
 <div class="rounded-lg bg-slate-100 dark:bg-slate-900/50 p-3 shadow-sm report-card">
 <div class="flex items-start gap-4">
 <div class="h-20 w-20 flex-shrink-0">
+<<<<<<< HEAD
 <img alt="Recent report" class="h-full w-full rounded-lg object-cover" id="recent-report-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxKzabh5UelxnnkoldCLIjOkIcPMtLfAcpNOw1xKvL2g2Vq4VkP8QkVJibQf7aaNN3C5dewChCp55AQ73K7-rCEK79rqfroLw4CnLi1yVJIftAJlBBpm6KZUdNMbuXVfKcrQJL7KQeEOv-047-66k79oJFeBb47xjPRyHA7RPQXsdUN62tgJd857VdtDP4jfhGkyzE2O49ODn1_fzJa9Z5ErYj24hzS3zyEYYxQMeJ8k-S_KMHpw_flEgcyNKuUX65gj7504SSxsIz"/>
+=======
+<<<<<<< HEAD
+<img alt="Pothole report" class="h-full w-full rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxKzabh5UelxnnkoldCLIjOkIcPMtLfAcpNOw1xKvL2g2Vq4VkP8QkVJibQf7aaNN3C5dewChCp55AQ73K7-rCEK79rqfroLw4CnLi1yVJIftAJlBBpm6KZUdNMbuXVfKcrQJL7KQeEOv-047-66k79oJFeBb47xjPRyHA7RPQXsdUN62tgJd857VdtDP4jfhGkyzE2O49ODn1_fzJa9Z5ErYj24hzS3zyEYYxQMeJ8k-S_KMHpw_flEgcyNKuUX65gj7504SSxsIz"/>
+=======
+<img alt="Recent report" class="h-full w-full rounded-lg object-cover" id="recent-report-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxKzabh5UelxnnkoldCLIjOkIcPMtLfAcpNOw1xKvL2g2Vq4VkP8QkVJibQf7aaNN3C5dewChCp55AQ73K7-rCEK79rqfroLw4CnLi1yVJIftAJlBBpm6KZUdNMbuXVfKcrQJL7KQeEOv-047-66k79oJFeBb47xjPRyHA7RPQXsdUN62tgJd857VdtDP4jfhGkyzE2O49ODn1_fzJa9Z5ErYj24hzS3zyEYYxQMeJ8k-S_KMHpw_flEgcyNKuUX65gj7504SSxsIz"/>
+>>>>>>> c8ed11a (Final CivicLens)
+>>>>>>> 80406fd (your message)
 </div>
 <div class="flex-1">
 <p class="font-bold text-slate-800 dark:text-white">Pothole</p>
@@ -140,11 +149,11 @@
 </div>
 <footer class="sticky bottom-0 border-t border-slate-200/50 dark:border-slate-800/50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm pb-safe">
 <nav class="flex justify-around p-2">
-<a class="flex flex-col items-center gap-1 p-2 text-slate-500 dark:text-slate-400" href="#" data-link="home"><span class="material-symbols-outlined">home</span><span class="text-xs font-medium">Home</span></a>
-<a class="flex flex-col items-center gap-1 rounded-full bg-primary/10 dark:bg-primary/20 p-2 px-4 text-primary" href="#" data-link="myreports"><span class="material-symbols-outlined">description</span><span class="text-xs font-medium">My Reports</span></a>
-<a class="flex flex-col items-center gap-1 p-2 text-slate-500 dark:text-slate-400 text-center" href="#" data-link="map"><span class="material-symbols-outlined">map</span><span class="text-xs font-medium">Map</span></a>
-<a class="flex flex-col items-center gap-1 p-2 text-slate-500 dark:text-slate-400" href="#" data-link="impact"><span class="material-symbols-outlined">insights</span><span class="text-xs font-medium">My Impact</span></a>
-<a class="flex flex-col items-center gap-1 p-2 text-slate-500 dark:text-slate-400" href="#" data-link="leaderboard"><span class="material-symbols-outlined">leaderboard</span><span class="text-xs font-medium">Leaderboard</span></a>
+<a class="flex flex-col items-center gap-1 p-2 text-slate-500 dark:text-slate-400" href="#" data-link="home"><span class="material-symbols-outlined">home</span><span class="text-xs font-medium" data-i18n-key="nav_home">Home</span></a>
+<a class="flex flex-col items-center gap-1 rounded-full bg-primary/10 dark:bg-primary/20 p-2 px-4 text-primary" href="#" data-link="myreports"><span class="material-symbols-outlined">description</span><span class="text-xs font-medium" data-i18n-key="nav_reports">My Reports</span></a>
+<a class="flex flex-col items-center gap-1 p-2 text-slate-500 dark:text-slate-400 text-center" href="#" data-link="map"><span class="material-symbols-outlined">map</span><span class="text-xs font-medium" data-i18n-key="nav_map">Map</span></a>
+<a class="flex flex-col items-center gap-1 p-2 text-slate-500 dark:text-slate-400" href="#" data-link="impact"><span class="material-symbols-outlined">insights</span><span class="text-xs font-medium" data-i18n-key="nav_impact">My Impact</span></a>
+<a class="flex flex-col items-center gap-1 p-2 text-slate-500 dark:text-slate-400" href="#" data-link="leaderboard"><span class="material-symbols-outlined">leaderboard</span><span class="text-xs font-medium" data-i18n-key="nav_leaderboard">Leaderboard</span></a>
 </nav>
 </footer>
 </div>
@@ -152,7 +161,26 @@
 <script>
   (function(){
     document.getElementById('back-btn')?.addEventListener('click', function(e){ e.preventDefault(); history.back(); });
+    // Load captured image from localStorage
+    function loadCapturedImage() {
+      const recentImage = document.getElementById('recent-report-image');
+      const savedImage = localStorage.getItem('lastCapturedImage');
+      const savedCategory = localStorage.getItem('lastCapturedCategory');
+      
+      if (savedImage && recentImage) {
+        recentImage.src = savedImage;
+        recentImage.alt = savedCategory ? `${savedCategory} report` : 'Recent report';
+        console.log('Loaded captured image from localStorage');
+        
+        // Update the report title to match the captured category
+        const reportTitle = recentImage.closest('.report-card').querySelector('p.font-bold');
+        if (reportTitle && savedCategory) {
+          reportTitle.textContent = savedCategory;
+        }
+      }
+    }
 
+<<<<<<< HEAD
     // Load captured image from localStorage
     function loadCapturedImage() {
       const recentImage = document.getElementById('recent-report-image');
@@ -175,6 +203,10 @@
     // Load image when page loads
     loadCapturedImage();
 
+=======
+    // Load image when page loads
+    loadCapturedImage();
+>>>>>>> 80406fd (your message)
     document.querySelectorAll('.report-card').forEach(card => { card.style.cursor = 'pointer'; card.addEventListener('click', function(e){ e.preventDefault(); if (window.MapsTo) { window.MapsTo('reportdetails'); } else { location.href = 'reportdetails.html'; } }); });
 
     const tabsContainer = document.getElementById('filter-tabs');
@@ -189,6 +221,10 @@
     document.querySelectorAll('footer [data-link]').forEach(link => { link.addEventListener('click', function(e){ e.preventDefault(); const dest = this.getAttribute('data-link'); if (window.MapsTo) { window.MapsTo(dest); } else { const mapToFile = { home: 'homepage.html', myreports: 'myreports.html', map: 'map.html', impact: 'myimpact.html', leaderboard: 'Leaderboard.html' }; location.href = mapToFile[dest] || 'homepage.html'; } }); });
   })();
 </script>
+<script src="./js/i18n.js"></script>
+<script>
+  (function(){ if (window.CivicI18n) window.CivicI18n.applyTranslations(); })();
+  </script>
 
 </body></html>
 

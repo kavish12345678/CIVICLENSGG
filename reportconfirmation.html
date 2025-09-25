@@ -70,6 +70,17 @@
   </head>
 <body class="bg-background-light dark:bg-background-dark font-display">
 <div class="flex flex-col h-screen justify-between">
+<div class="p-4 flex justify-end">
+<select data-lang-selector class="rounded-full bg-background-dark/10 dark:bg-background-light/10 text-slate-800 dark:text-white text-xs px-2 py-1 border border-black/10 dark:border-white/10">
+  <option value="en">English</option>
+  <option value="hi">हिन्दी</option>
+  <option value="ta">தமிழ்</option>
+  <option value="te">తెలుగు</option>
+  <option value="bn">বাংলা</option>
+  <option value="kn">ಕನ್ನಡ</option>
+  <option value="gu">ગુજરાતી</option>
+</select>
+</div>
 <main class="flex flex-col items-center justify-center text-center px-6 flex-grow">
 <div class="w-24 h-24 mb-6 flex items-center justify-center bg-primary/10 dark:bg-primary/20 rounded-full animate-pulse-glow">
 <div class="w-20 h-20 flex items-center justify-center bg-primary/20 dark:bg-primary/30 rounded-full">
@@ -78,16 +89,12 @@
                     </span>
 </div>
 </div>
-<h1 class="text-3xl font-bold text-slate-800 dark:text-white">Report Submitted!</h1>
+<h1 class="text-3xl font-bold text-slate-800 dark:text-white" data-i18n-key="success_title">Report Submitted!</h1>
 <p class="mt-2 text-base text-slate-600 dark:text-slate-400">Confirmation ID: #CL7890</p>
 </main>
 <footer class="p-4 space-y-3">
-<button class="w-full h-14 bg-primary text-white font-bold rounded-full text-lg">
-                View My Reports
-            </button>
-<button class="w-full h-14 bg-primary/20 dark:bg-primary/30 text-primary font-bold rounded-full text-lg">
-                Report Another Issue
-            </button>
+<button class="w-full h-14 bg-primary text-white font-bold rounded-full text-lg" data-i18n-key="view_my_reports_button">View My Reports</button>
+<button class="w-full h-14 bg-primary/20 dark:bg-primary/30 text-primary font-bold rounded-full text-lg" data-i18n-key="report_another_issue_button">Report Another Issue</button>
 </footer>
 </div>
 <script>
@@ -99,6 +106,10 @@
     if (another) another.addEventListener('click', function(e){ e.preventDefault(); if (window.MapsTo) { window.MapsTo('home'); } else { location.href = 'homepage.html'; } });
   })();
 </script>
+<script src="./js/i18n.js"></script>
+<script>
+  (function(){ if (window.CivicI18n) window.CivicI18n.applyTranslations(); })();
+  </script>
 
 </body></html>
 

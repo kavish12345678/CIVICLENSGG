@@ -86,7 +86,8 @@
 <button class="p-2 rounded-full text-slate-800 dark:text-slate-200">
 <span class="material-symbols-outlined">arrow_back</span>
 </button>
-<h1 class="flex-1 text-lg font-bold text-center text-slate-900 dark:text-white">My Impact Report</h1>
+<h1 class="flex-1 text-lg font-bold text-center text-slate-900 dark:text-white" data-i18n-key="impact_report_title">My Impact Report</h1>
+<select data-lang-selector class="absolute right-4 top-4 rounded-full bg-background-dark/10 dark:bg-background-light/10 text-slate-800 dark:text-white text-xs px-2 py-1 border border-black/10 dark:border-white/10"></select>
 <div class="w-10"></div>
 </div>
 </header>
@@ -160,16 +161,29 @@
 </main>
 <nav class="fixed bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-800 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm">
 <div class="flex justify-around items-center h-16 pb-safe">
-<a class="flex flex-col items-center justify-center gap-1 text-slate-600 dark:text-slate-400" href="#" data-link="home"><span class="material-symbols-outlined">home</span><span class="text-xs font-bold">Home</span></a>
-<a class="flex flex-col items-center justify-center gap-1 text-slate-600 dark:text-slate-400" href="#" data-link="myreports"><span class="material-symbols-outlined">assignment</span><span class="text-xs font-medium">My Reports</span></a>
-<a class="flex flex-col items-center justify-center gap-1 text-slate-600 dark:text-slate-400" href="#" data-link="map"><span class="material-symbols-outlined">map</span><span class="text-xs font-medium">Map</span></a>
-<a class="flex flex-col items-center justify-center gap-1 text-primary" href="#" data-link="impact"><span class="material-symbols-outlined">insights</span><span class="text-xs font-medium">My Impact</span></a>
-<a class="flex flex-col items-center justify-center gap-1 text-slate-600 dark:text-slate-400" href="#" data-link="leaderboard"><span class="material-symbols-outlined">leaderboard</span><span class="text-xs font-medium">Leaderboard</span></a>
+<a class="flex flex-col items-center justify-center gap-1 text-slate-600 dark:text-slate-400" href="#" data-link="home"><span class="material-symbols-outlined">home</span><span class="text-xs font-bold" data-i18n-key="nav_home">Home</span></a>
+<a class="flex flex-col items-center justify-center gap-1 text-slate-600 dark:text-slate-400" href="#" data-link="myreports"><span class="material-symbols-outlined">assignment</span><span class="text-xs font-medium" data-i18n-key="nav_reports">My Reports</span></a>
+<a class="flex flex-col items-center justify-center gap-1 text-slate-600 dark:text-slate-400" href="#" data-link="map"><span class="material-symbols-outlined">map</span><span class="text-xs font-medium" data-i18n-key="nav_map">Map</span></a>
+<a class="flex flex-col items-center justify-center gap-1 text-primary" href="#" data-link="impact"><span class="material-symbols-outlined">insights</span><span class="text-xs font-medium" data-i18n-key="nav_impact">My Impact</span></a>
+<a class="flex flex-col items-center justify-center gap-1 text-slate-600 dark:text-slate-400" href="#" data-link="leaderboard"><span class="material-symbols-outlined">leaderboard</span><span class="text-xs font-medium" data-i18n-key="nav_leaderboard">Leaderboard</span></a>
 </div>
 </nav>
 </div>
 <script>
   (function(){
+    // Back button functionality
+    const backButton = document.querySelector('button .material-symbols-outlined').parentElement;
+    if (backButton) {
+      backButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (window.MapsTo) {
+          window.MapsTo('home');
+        } else {
+          location.href = 'homepage.html';
+        }
+      });
+    }
+    
     // Bottom nav routing
     document.querySelectorAll('[data-link]').forEach(link => { link.addEventListener('click', function(e){ e.preventDefault(); const dest = this.getAttribute('data-link'); if (window.MapsTo) { window.MapsTo(dest); } else { const mapToFile = { home: 'homepage.html', myreports: 'myreports.html', map: 'map.html', impact: 'myimpact.html', leaderboard: 'Leaderboard.html' }; location.href = mapToFile[dest] || 'homepage.html'; } }); });
     // Map from last scanned location
@@ -186,5 +200,9 @@
     document.getElementById('view-cert')?.addEventListener('click', function(e){ if (window.MapsTo) { e.preventDefault(); window.MapsTo('certificate'); } });
   })();
 </script>
+<script src="./js/i18n.js"></script>
+<script>
+  (function(){ if (window.CivicI18n) window.CivicI18n.applyTranslations(); })();
+  </script>
 </body></html>
 

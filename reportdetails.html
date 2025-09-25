@@ -46,11 +46,12 @@
   </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
 <div class="max-w-md mx-auto min-h-screen flex flex-col">
-<header class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800">
+<header class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800 relative">
 <button class="p-2" id="back-btn">
 <span class="material-symbols-outlined text-gray-900 dark:text-white">arrow_back</span>
 </button>
-<h1 class="text-lg font-bold text-gray-900 dark:text-white flex-1 text-center">Report Details</h1>
+<h1 class="text-lg font-bold text-gray-900 dark:text-white flex-1 text-center" data-i18n-key="report_details_title">Report Details</h1>
+<select data-lang-selector class="absolute right-4 top-4 rounded-full bg-background-dark/10 dark:bg-background-light/10 text-gray-900 dark:text-white text-xs px-2 py-1 border border-black/10 dark:border-white/10"></select>
 <div class="w-10"></div>
 </header>
 <main class="flex-grow overflow-y-auto">
@@ -120,19 +121,19 @@
 <div class="flex justify-around p-2">
 <a class="flex flex-col items-center gap-1 p-2 text-gray-500 dark:text-gray-400" href="#" data-link="home">
 <span class="material-symbols-outlined">home</span>
-<span class="text-xs">Home</span>
+<span class="text-xs" data-i18n-key="nav_home">Home</span>
 </a>
 <a class="flex flex-col items-center gap-1 p-2 text-primary dark:text-primary" href="#" data-link="myreports">
 <span class="material-symbols-outlined">description</span>
-<span class="text-xs">My Reports</span>
+<span class="text-xs" data-i18n-key="nav_reports">My Reports</span>
 </a>
 <a class="flex flex-col items-center gap-1 p-2 text-gray-500 dark:text-gray-400" href="#" data-link="map">
 <span class="material-symbols-outlined">map</span>
-<span class="text-xs">Map</span>
+<span class="text-xs" data-i18n-key="nav_map">Map</span>
 </a>
 <a class="flex flex-col items-center gap-1 p-2 text-gray-500 dark:text-gray-400" href="#" data-link="leaderboard">
 <span class="material-symbols-outlined">leaderboard</span>
-<span class="text-xs">Leaderboard</span>
+<span class="text-xs" data-i18n-key="nav_leaderboard">Leaderboard</span>
 </a>
 </div>
 </nav>
@@ -140,7 +141,26 @@
 <script>
   (function(){
     document.getElementById('back-btn')?.addEventListener('click', function(e){ e.preventDefault(); history.back(); });
+    // Load captured image from localStorage
+    function loadCapturedImage() {
+      const reportPhoto = document.getElementById('rd-photo');
+      const savedImage = localStorage.getItem('lastCapturedImage');
+      const savedCategory = localStorage.getItem('lastCapturedCategory');
+      
+      if (savedImage && reportPhoto) {
+        reportPhoto.src = savedImage;
+        reportPhoto.alt = savedCategory ? `${savedCategory} report` : 'Uploaded photo';
+        console.log('Loaded captured image from localStorage');
+        
+        // Update the report title to match the captured category
+        const reportTitle = document.getElementById('rd-title');
+        if (reportTitle && savedCategory) {
+          reportTitle.textContent = `${savedCategory} Report`;
+        }
+      }
+    }
 
+<<<<<<< HEAD
     // Load captured image from localStorage
     function loadCapturedImage() {
       const reportPhoto = document.getElementById('rd-photo');
@@ -163,6 +183,10 @@
     // Load image when page loads
     loadCapturedImage();
 
+=======
+    // Load image when page loads
+    loadCapturedImage();
+>>>>>>> 80406fd (your message)
     // Bottom nav
     document.querySelectorAll('[data-link]').forEach(link => {
       link.addEventListener('click', function(e){
@@ -207,5 +231,9 @@
     })();
   })();
 </script>
+<script src="./js/i18n.js"></script>
+<script>
+  (function(){ if (window.CivicI18n) window.CivicI18n.applyTranslations(); })();
+  </script>
 </body></html>
 

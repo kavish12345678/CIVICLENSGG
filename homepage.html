@@ -125,7 +125,7 @@
       visibility: hidden;
       transform: translateY(-20px);
       transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-      z-index: 20;
+      z-index: 50;
       pointer-events: none;
     }
     #category-selector.open+.category-options .category-option {
@@ -236,74 +236,87 @@
   </head>
 <body class="bg-gray-900 text-white flex flex-col state-initial pb-20" id="app-body">
 <div class="p-4 pt-6 z-10 w-full max-w-sm mx-auto">
+<!-- Header with centered title -->
+<header class="text-center mb-6">
+<h1 class="text-2xl font-bold text-white mb-2">CivicLens</h1>
+</header>
+<select data-lang-selector class="fixed right-4 top-4 z-40 bg-gray-800 text-white text-xs rounded-full px-3 py-1 border border-gray-700">
+  <option value="en">English</option>
+  <option value="hi">हिन्दी</option>
+  <option value="ta">தமிழ்</option>
+  <option value="te">తెలుగు</option>
+  <option value="bn">বাংলা</option>
+  <option value="kn">ಕನ್ನಡ</option>
+  <option value="gu">ગુજરાતી</option>
+</select>
 <div class="category-select-wrapper mx-auto">
 <button class="bg-gray-800 border border-gray-700 rounded-full px-6 py-3 text-white cursor-pointer flex items-center gap-3 w-full justify-between shadow-lg" id="category-selector">
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined">widgets</span>
-<span class="font-medium">Select Category</span>
+<span class="font-medium" data-i18n-key="home_select_category">Select Category</span>
 </div>
 <span class="material-symbols-outlined ml-auto transition-transform duration-300">expand_more</span>
 </button>
 <div class="category-options w-full">
 <div class="category-option">
 <span class="material-symbols-outlined text-blue-400">road</span>
-<span>Roads</span>
+<span data-i18n-key="category_roads">Roads</span>
 </div>
 <div class="category-option">
 <span class="material-symbols-outlined text-green-400">delete</span>
-<span>Waste Management</span>
+<span data-i18n-key="category_waste">Waste Management</span>
 </div>
 <div class="category-option">
 <span class="material-symbols-outlined text-purple-400">apartment</span>
-<span>Infrastructure</span>
+<span data-i18n-key="category_infrastructure">Infrastructure</span>
 </div>
 <div class="category-option">
 <span class="material-symbols-outlined text-yellow-400">lightbulb</span>
-<span>Street Lighting</span>
+<span data-i18n-key="category_street_lighting">Street Lighting</span>
 </div>
 <div class="category-option">
 <span class="material-symbols-outlined text-cyan-400">water_drop</span>
-<span>Water &amp; Sewage</span>
+<span data-i18n-key="category_water_sewage">Water &amp; Sewage</span>
 </div>
 <div class="category-option">
 <span class="material-symbols-outlined text-orange-400">brush</span>
-<span>Vandalism</span>
+<span data-i18n-key="category_vandalism">Vandalism</span>
 </div>
 <div class="category-option">
 <span class="material-symbols-outlined text-red-400">health_and_safety</span>
-<span>Public Health &amp; Sanitation</span>
+<span data-i18n-key="category_health_sanitation">Public Health &amp; Sanitation</span>
 </div>
 <div class="category-option">
 <span class="material-symbols-outlined text-lime-400">park</span>
-<span>Parks &amp; Green Spaces</span>
+<span data-i18n-key="category_parks_green">Parks &amp; Green Spaces</span>
 </div>
 <div class="category-option">
 <span class="material-symbols-outlined text-amber-400">home_work</span>
-<span>Encroachments</span>
+<span data-i18n-key="category_encroachments">Encroachments</span>
 </div>
 <div class="category-option">
 <span class="material-symbols-outlined text-indigo-400">air</span>
-<span>Noise &amp; Air Pollution</span>
+<span data-i18n-key="category_noise_air_pollution">Noise &amp; Air Pollution</span>
 </div>
 <div class="category-option">
 <span class="material-symbols-outlined text-teal-400">flood</span>
-<span>Flooding &amp; Drainage</span>
+<span data-i18n-key="category_flooding_drainage">Flooding &amp; Drainage</span>
 </div>
 <div class="category-option">
 <span class="material-symbols-outlined text-rose-400">traffic</span>
-<span>Traffic &amp; Parking Issues</span>
+<span data-i18n-key="category_traffic_parking">Traffic &amp; Parking Issues</span>
 </div>
 <div class="category-option">
 <span class="material-symbols-outlined text-yellow-500">power</span>
-<span>Electricity &amp; Power Supply</span>
+<span data-i18n-key="category_electricity_power">Electricity &amp; Power Supply</span>
 </div>
 <div class="category-option">
 <span class="material-symbols-outlined text-sky-400">directions_bus</span>
-<span>Public Transport &amp; Bus Stops</span>
+<span data-i18n-key="category_public_transport">Public Transport &amp; Bus Stops</span>
 </div>
 <div class="category-option">
 <span class="material-symbols-outlined text-blue-300">water</span>
-<span>Drinking Water Quality</span>
+<span data-i18n-key="category_drinking_water">Drinking Water Quality</span>
 </div>
 </div>
 </div>
@@ -314,7 +327,7 @@
 <label class="relative w-64 h-64 rounded-full border-4 border-blue-500 flex items-center justify-center animate-pulse-blue cursor-pointer" for="camera-input" id="scan-button">
 <div class="flex flex-col items-center">
 <span class="material-symbols-outlined text-7xl text-blue-400">photo_camera</span>
-<p class="mt-2 text-blue-300 font-semibold">Tap to Scan a Civic Issue</p>
+<p class="mt-2 text-blue-300 font-semibold" data-i18n-key="home_scan_button">Tap to Scan a Civic Issue</p>
 </div>
 </label>
 <input accept="image/*" capture="environment" class="hidden" id="camera-input" type="file"/>
@@ -324,7 +337,7 @@
 <img alt="Captured issue" class="w-full h-full object-cover" id="captured-image-analyzing" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxnM0yHh5N2BP7w5FdEOt99OBB2X1D7gz-xDIRDQGtIY0Ap_iMDEcgNu9a3IMHbN2lYyg17J83dUPZsKTDFwg6AEKoFiWism2NlRtFMRi0R_QNEyEVnusdTwL8jUuDbaygDVHbJito3Y5kfrCqta8TBFyA-CU1Jc38ndOr7-_kKCmzmQcW8_4-yq-E1Gc2Xn0HLtDbueoR5DYcZUubRW8Vg8xRQgKJK-mdWNxAdDMjYU9CRIAuB57MaDoOAN-hwZztYojb64mkxmA3"/>
 <div class="scan-line animate-scan-line"></div>
 </div>
-<p class="mt-4 text-white font-semibold text-lg tracking-wider">AI Analyzing...</p>
+<p class="mt-4 text-white font-semibold text-lg tracking-wider" data-i18n-key="home_analyzing">AI Analyzing...</p>
 </div>
 <div class="analyzed-state w-full max-w-sm space-y-6">
 <div class="relative w-64 h-64 mx-auto rounded-full overflow-hidden border-4 border-red-500">
@@ -332,7 +345,7 @@
 </div>
 <div class="space-y-4">
 <div class="severity-meter-container">
-<p class="text-sm text-gray-400 text-center mb-2 font-medium">Severity Meter</p>
+<p class="text-sm text-gray-400 text-center mb-2 font-medium" data-i18n-key="home_severity_meter">Severity Meter</p>
 <div class="grid grid-cols-3 gap-2 text-center">
 <div class="bg-gray-800/50 p-2 rounded-lg opacity-0 meter-card-enter">
 <p class="font-bold text-green-500/40">LOW</p>
@@ -368,32 +381,30 @@
 </div>
 </div>
 <div class="w-full max-w-sm space-y-4 px-6">
-<button class="w-full h-14 rounded-full font-bold text-lg transition-all duration-300 bg-gray-700 text-gray-500 cursor-not-allowed" id="report-button">
-        Report Issue
-      </button>
+<button class="w-full h-14 rounded-full font-bold text-lg transition-all duration-300 bg-gray-700 text-gray-500 cursor-not-allowed" id="report-button" data-i18n-key="home_report_button">Report Issue</button>
 </div>
 </div>
 <nav class="fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-700/80 shadow-[0_-10px_30px_-15px_rgba(0,0,0,0.3)]">
 <div class="flex justify-around max-w-md mx-auto">
 <a class="flex flex-col items-center justify-center text-white bg-blue-600/20 p-3 w-full" href="#" data-link="home">
 <span class="material-symbols-outlined">home</span>
-<span class="text-xs font-medium">Home</span>
+<span class="text-xs font-medium" data-i18n-key="nav_home">Home</span>
 </a>
 <a class="flex flex-col items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800/60 p-3 transition-colors duration-200 w-full" href="#" data-link="myreports">
 <span class="material-symbols-outlined">history</span>
-<span class="text-xs font-medium">My Reports</span>
+<span class="text-xs font-medium" data-i18n-key="nav_reports">My Reports</span>
 </a>
 <a class="flex flex-col items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800/60 p-3 transition-colors duration-200 w-full" href="#" data-link="map">
 <span class="material-symbols-outlined">map</span>
-<span class="text-xs font-medium">Map</span>
+<span class="text-xs font-medium" data-i18n-key="nav_map">Map</span>
 </a>
 <a class="flex flex-col items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800/60 p-3 transition-colors duration-200 w-full" href="#" data-link="impact">
 <span class="material-symbols-outlined">insights</span>
-<span class="text-xs font-medium">My Impact</span>
+<span class="text-xs font-medium" data-i18n-key="nav_impact">My Impact</span>
 </a>
 <a class="flex flex-col items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800/60 p-3 transition-colors duration-200 w-full" href="#" data-link="leaderboard">
 <span class="material-symbols-outlined">leaderboard</span>
-<span class="text-xs font-medium">Leaderboard</span>
+<span class="text-xs font-medium" data-i18n-key="nav_leaderboard">Leaderboard</span>
 </a>
 </div>
 </nav>
@@ -600,7 +611,10 @@
           const imageUrl = e.target.result;
           capturedImageAnalyzing.src = imageUrl;
           capturedImageAnalyzed.src = imageUrl;
+<<<<<<< HEAD
           
+=======
+>>>>>>> 80406fd (your message)
           // Save image to localStorage for use in other pages
           try {
             localStorage.setItem('lastCapturedImage', imageUrl);
@@ -609,7 +623,10 @@
           } catch (error) {
             console.error('Failed to save image to localStorage:', error);
           }
+<<<<<<< HEAD
           
+=======
+>>>>>>> 80406fd (your message)
           // Convert to base64 for API
           const base64Data = imageUrl.split(',')[1]; // Remove data:image/jpeg;base64, prefix
           
@@ -715,6 +732,11 @@
       if (window.MapsTo) { window.MapsTo('reportconfirmation'); }
       else { location.href = 'reportconfirmation.html'; }
     });
+  </script>
+
+<script src="./js/i18n.js"></script>
+<script>
+  (function(){ if (window.CivicI18n) window.CivicI18n.applyTranslations(); })();
   </script>
 
 </body></html>

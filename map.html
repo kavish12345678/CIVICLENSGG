@@ -32,6 +32,13 @@
       body { min-height: max(884px, 100dvh); }
       #real-map { position: absolute; inset: 0; }
       .leaflet-container { background: #0b0f14; }
+      /* Pulse highlight for top upvoted pin */
+      @keyframes pulse-ring {
+        0% { box-shadow: 0 0 0 0 rgba(11, 122, 218, 0.55); }
+        70% { box-shadow: 0 0 0 14px rgba(11, 122, 218, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(11, 122, 218, 0); }
+      }
+      .pulse-highlight .pin-dot { animation: pulse-ring 1.8s ease-out infinite; }
     </style>
   </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-gray-100">
@@ -40,7 +47,8 @@
 <button class="flex h-10 w-10 items-center justify-center rounded-full text-gray-600 dark:text-gray-300" id="back-btn">
 <span class="material-symbols-outlined"> arrow_back </span>
 </button>
-<h1 class="flex-1 text-center text-lg font-bold text-gray-900 dark:text-gray-50 pr-10">Nearby Issues</h1>
+<h1 class="flex-1 text-center text-lg font-bold text-gray-900 dark:text-gray-50 pr-10" data-i18n-key="nearby_issues_title">Nearby Issues</h1>
+<select data-lang-selector class="absolute right-4 top-4 rounded-full bg-background-dark/10 dark:bg-background-light/10 text-gray-800 dark:text-gray-100 text-xs px-2 py-1 border border-black/10 dark:border-white/10"></select>
 </header>
 <div class="flex space-x-2 overflow-x-auto px-4 pb-3" id="status-filters">
 <button class="whitespace-nowrap rounded-full bg-primary px-4 py-2 text-sm font-medium text-white" data-filter="all">All</button>
@@ -51,6 +59,7 @@
 </div>
 <div class="relative flex-1">
 <div id="real-map" class="z-0"></div>
+<div id="pin-overlay" class="absolute inset-0 z-10 pointer-events-none"></div>
 <div class="absolute top-4 left-4 right-4 z-10">
 <div class="relative">
 <span class="material-symbols-outlined pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500"> search </span>
@@ -77,23 +86,23 @@
 <nav class="sticky bottom-0 flex border-t border-gray-200 dark:border-gray-800 bg-background-light dark:bg-background-dark">
 <a class="flex flex-1 flex-col items-center gap-1 py-2 text-gray-500 dark:text-gray-400" href="#" data-link="home">
 <span class="material-symbols-outlined"> home </span>
-<span class="text-xs">Home</span>
+<span class="text-xs" data-i18n-key="nav_home">Home</span>
 </a>
 <a class="flex flex-1 flex-col items-center gap-1 py-2 text-gray-500 dark:text-gray-400" href="#" data-link="myreports">
 <span class="material-symbols-outlined"> description </span>
-<span class="text-xs">My Reports</span>
+<span class="text-xs" data-i18n-key="nav_reports">My Reports</span>
 </a>
 <a class="flex flex-1 flex-col items-center gap-1 py-2 text-primary" href="#" data-link="map">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1"> map </span>
-<span class="text-xs font-bold">Map</span>
+<span class="text-xs font-bold" data-i18n-key="nav_map">Map</span>
 </a>
 <a class="flex flex-1 flex-col items-center gap-1 py-2 text-gray-500 dark:text-gray-400" href="#" data-link="impact">
 <span class="material-symbols-outlined"> insights </span>
-<span class="text-xs">My Impact</span>
+<span class="text-xs" data-i18n-key="nav_impact">My Impact</span>
 </a>
 <a class="flex flex-1 flex-col items-center gap-1 py-2 text-gray-500 dark:text-gray-400" href="#" data-link="leaderboard">
 <span class="material-symbols-outlined"> leaderboard </span>
-<span class="text-xs">Leaderboard</span>
+<span class="text-xs" data-i18n-key="nav_leaderboard">Leaderboard</span>
 </a>
 </nav>
 </div>
@@ -229,6 +238,100 @@
       });
     }
   })();
+</script>
+<script>
+  // Mock issues data (for overlay pins)
+  let issues = [
+    { id: 1, name: 'Pothole', status: 'In Progress', upvotes: 12, positionClass: 'top-1/2 left-1/2' },
+    { id: 2, name: 'Waste Overflow', status: 'Pending', upvotes: 8, positionClass: 'top-1/3 left-1/4' },
+    { id: 3, name: 'Park Bench Broken', status: 'Resolved', upvotes: 5, positionClass: 'bottom-1/3 right-1/4' }
+  ];
+
+  // Render overlay pins and popups
+  function renderPins() {
+    const overlay = document.getElementById('pin-overlay');
+    if (!overlay) return;
+    overlay.innerHTML = '';
+    issues.forEach((issue) => {
+      const wrapper = document.createElement('div');
+      wrapper.className = `absolute ${issue.positionClass} -translate-x-1/2 -translate-y-full pointer-events-none`;
+      wrapper.setAttribute('data-id', String(issue.id));
+
+      // Pin button
+      const pinBtn = document.createElement('button');
+      pinBtn.className = 'pin-dot pointer-events-auto flex h-6 w-6 items-center justify-center rounded-full bg-primary/90 text-white shadow';
+      pinBtn.innerHTML = '<span class="material-symbols-outlined" style="font-variation-settings: \"FILL\" 1"> place </span>';
+
+      // Popup card
+      const card = document.createElement('div');
+      card.className = 'mt-1 w-48 pointer-events-auto rounded-lg bg-background-light/95 dark:bg-background-dark/95 p-2 shadow ring-1 ring-black/5 backdrop-blur';
+      card.innerHTML = `
+        <div class="flex items-start justify-between gap-2">
+          <div>
+            <div class="text-sm font-bold text-gray-900 dark:text-gray-50">${issue.name}</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">${issue.status}</div>
+          </div>
+          <button class="upvote-btn flex items-center gap-1 rounded-full px-2 py-1 text-xs text-gray-600 dark:text-gray-300 hover:text-primary disabled:text-primary disabled:opacity-70" data-id="${issue.id}">
+            <span class="material-symbols-outlined"> thumb_up </span>
+            <span class="upvote-count">${issue.upvotes}</span>
+          </button>
+        </div>
+      `;
+
+      wrapper.appendChild(pinBtn);
+      wrapper.appendChild(card);
+      overlay.appendChild(wrapper);
+    });
+    highlightTopIssue();
+  }
+
+  // Upvote behavior
+  function handleUpvote(e) {
+    const target = e.target.closest && e.target.closest('.upvote-btn');
+    if (!target) return;
+    const id = parseInt(target.getAttribute('data-id') || '0', 10);
+    if (!id) return;
+    if (target.disabled) return;
+
+    const issue = issues.find((i) => i.id === id);
+    if (!issue) return;
+    issue.upvotes += 1;
+
+    const countEl = target.querySelector('.upvote-count');
+    if (countEl) countEl.textContent = String(issue.upvotes);
+
+    target.disabled = true;
+    const icon = target.querySelector('.material-symbols-outlined');
+    if (icon) icon.style.fontVariationSettings = "'FILL' 1";
+    target.classList.add('cursor-not-allowed');
+
+    highlightTopIssue();
+  }
+
+  // Highlight the highest upvoted issue pin
+  function highlightTopIssue() {
+    if (!issues.length) return;
+    let top = issues[0];
+    for (let i = 1; i < issues.length; i++) {
+      if (issues[i].upvotes > top.upvotes) top = issues[i];
+    }
+
+    const overlay = document.getElementById('pin-overlay');
+    if (!overlay) return;
+    Array.from(overlay.children).forEach((child) => child.classList.remove('pulse-highlight'));
+    const topEl = overlay.querySelector(`[data-id="${top.id}"]`);
+    if (topEl) topEl.classList.add('pulse-highlight');
+  }
+
+  // Wire events and initial render after DOM ready
+  (function initUpvotes() {
+    renderPins();
+    document.addEventListener('click', handleUpvote);
+  })();
+</script>
+<script src="./js/i18n.js"></script>
+<script>
+  (function(){ if (window.CivicI18n) window.CivicI18n.applyTranslations(); })();
 </script>
 </body></html>
 

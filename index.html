@@ -75,25 +75,44 @@
 <body class="font-display bg-background-light dark:bg-background-dark">
 <div class="relative flex flex-col h-screen w-full overflow-hidden">
 <div class="cityscape-bg"></div>
-<header class="flex items-center justify-center p-6 animate-fadeIn text-fade-in-1 opacity-0">
+<header class="relative flex items-center justify-center p-6 animate-fadeIn text-fade-in-1 opacity-0">
 <h1 class="text-2xl font-bold text-white animate-glow">CivicLens</h1>
+<select data-lang-selector class="absolute right-6 top-6 rounded-full bg-white/10 text-white text-sm px-3 py-1 border border-white/20 focus:outline-none focus:ring-2 focus:ring-primary">
+  <option value="en">English</option>
+  <option value="hi">हिन्दी</option>
+  <option value="ta">தமிழ்</option>
+  <option value="te">తెలుగు</option>
+  <option value="bn">বাংলা</option>
+  <option value="kn">ಕನ್ನಡ</option>
+  <option value="gu">ગુજરાતી</option>
+  </select>
 </header>
 <main class="flex-grow flex flex-col items-center justify-center text-center px-6">
 <div class="animate-fadeIn text-fade-in-1 opacity-0">
-<h2 class="text-4xl font-bold text-white">
-          Become a <span class="text-primary">City Guardian</span>
-</h2>
+<h2 class="text-4xl font-bold text-white" data-i18n-key="welcome_title">Become a City Guardian</h2>
 </div>
 <div class="animate-fadeIn text-fade-in-2 opacity-0 mt-2">
-<p class="text-lg text-white/80">Empower your community. One report at a time.</p>
+<p class="text-lg text-white/80" data-i18n-key="welcome_tagline">Empower your community. One report at a time.</p>
 </div>
 </main>
 <footer class="p-6">
 <div class="animate-fadeIn button-fade-in opacity-0">
-<a href="permission.html" class="block w-full"><button class="w-full h-14 bg-primary text-white text-lg font-bold rounded-xl shadow-lg animate-pulse focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background-dark focus:ring-primary">Get Started</button></a>
+<a href="permission.html" class="block w-full"><button class="w-full h-14 bg-primary text-white text-lg font-bold rounded-xl shadow-lg animate-pulse focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background-dark focus:ring-primary" data-i18n-key="get_started_button">Get Started</button></a>
 </div>
 </footer>
 </div>
+
+<script src="./js/i18n.js"></script>
+<script>
+  (function(){
+    const sel = document.getElementById('language-selector');
+    if (sel) {
+      sel.addEventListener('change', function(){
+        if (window.CivicI18n) window.CivicI18n.setLanguage(this.value);
+      });
+    }
+  })();
+  </script>
 
 </body></html>
 

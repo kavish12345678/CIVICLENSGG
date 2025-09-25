@@ -58,7 +58,8 @@
 <button class="text-white" id="back-btn">
 <svg class="text-black dark:text-white" fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path></svg>
 </button>
-<h1 class="text-lg font-bold text-black dark:text-white absolute left-1/2 -translate-x-1/2">Shareable Certificate</h1>
+<h1 class="text-lg font-bold text-black dark:text-white absolute left-1/2 -translate-x-1/2" data-i18n-key="certificate_title">Shareable Certificate</h1>
+<select data-lang-selector class="ml-auto rounded-full bg-background-dark/10 dark:bg-background-light/10 text-black dark:text-white text-xs px-2 py-1 border border-black/10 dark:border-white/10"></select>
 </header>
 <main class="flex-grow flex flex-col justify-center items-center p-4">
 <div class="w-full max-w-sm aspect-[5/7] rounded-xl shadow-2xl p-6 flex flex-col certificate-bg text-white">
@@ -79,16 +80,16 @@
 </div>
 </div>
 <div class="w-full max-w-sm mt-6">
-<button id="share-cert" class="w-full h-12 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"><span class="material-symbols-outlined">share</span> Share Certificate</button>
+<button id="share-cert" class="w-full h-12 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"><span class="material-symbols-outlined">share</span> <span data-i18n-key="share_certificate_button">Share Certificate</span></button>
 </div>
 </main>
 <footer class="sticky bottom-0 bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-800">
 <nav class="flex justify-around items-center h-20 text-xs text-gray-500 dark:text-gray-400">
-<a class="flex flex-col items-center gap-1" href="#" data-link="home"><span class="material-symbols-outlined">home</span><span>Home</span></a>
-<a class="flex flex-col items-center gap-1" href="#" data-link="myreports"><span class="material-symbols-outlined">description</span><span>My Reports</span></a>
-<a class="flex flex-col items-center gap-1" href="#" data-link="map"><span class="material-symbols-outlined">map</span><span>Map</span></a>
-<a class="flex flex-col items-center gap-1 text-primary" href="#" data-link="impact"><span class="material-symbols-outlined">insights</span><span>My Impact</span></a>
-<a class="flex flex-col items-center gap-1" href="#" data-link="leaderboard"><span class="material-symbols-outlined">leaderboard</span><span>Leaderboard</span></a>
+<a class="flex flex-col items-center gap-1" href="#" data-link="home"><span class="material-symbols-outlined">home</span><span data-i18n-key="nav_home">Home</span></a>
+<a class="flex flex-col items-center gap-1" href="#" data-link="myreports"><span class="material-symbols-outlined">description</span><span data-i18n-key="nav_reports">My Reports</span></a>
+<a class="flex flex-col items-center gap-1" href="#" data-link="map"><span class="material-symbols-outlined">map</span><span data-i18n-key="nav_map">Map</span></a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#" data-link="impact"><span class="material-symbols-outlined">insights</span><span data-i18n-key="nav_impact">My Impact</span></a>
+<a class="flex flex-col items-center gap-1" href="#" data-link="leaderboard"><span class="material-symbols-outlined">leaderboard</span><span data-i18n-key="nav_leaderboard">Leaderboard</span></a>
 </nav>
 </footer>
 </div>
@@ -120,5 +121,9 @@
     });
   })();
 </script>
+<script src="./js/i18n.js"></script>
+<script>
+  (function(){ if (window.CivicI18n) window.CivicI18n.applyTranslations(); })();
+  </script>
 </body></html>
 
