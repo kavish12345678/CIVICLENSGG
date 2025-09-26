@@ -33,6 +33,21 @@
   "nav_reports": "મારા રિપોર્ટ્સ",
   "nav_map": "નકશો",
   "nav_impact": "મારી અસર",
-  "nav_leaderboard": "લીડરબોર્ડ"
+  "nav_leaderboard": "લીડરબોર્ડ",
+  "category_roads": "રસ્તાઓ",
+  "category_waste": "કચરો વ્યવસ્થાપન",
+  "category_infrastructure": "અધોસંરચના",
+  "category_street_lighting": "સ્ટ્રીટ લાઇટિંગ",
+  "category_water_sewage": "પાણી અને સેવરેજ",
+  "category_vandalism": "વંડાલિઝમ",
+  "category_health_sanitation": "જાહેર આરોગ્ય અને સ્વચ્છતા",
+  "category_parks_green": "પાર્ક અને ગ્રીન સ્પેસ",
+  "category_encroachments": "અતિક્રમણ",
+  "category_noise_air_pollution": "અવાજ અને હવા પ્રદૂષણ",
+  "category_flooding_drainage": "વહેલ અને ડ્રેનેજ",
+  "category_traffic_parking": "ટ્રાફિક અને પાર્કિંગ સમસ્યાઓ",
+  "category_electricity_power": "વીજળી અને પાવર સપ્લાય",
+  "category_public_transport": "જાહેર પરિવહન અને બસ સ્ટોપ",
+  "category_drinking_water": "પીવાના પાણીની ગુણવત્તા"
 }
 

@@ -33,6 +33,21 @@
   "nav_reports": "My Reports",
   "nav_map": "Map",
   "nav_impact": "My Impact",
-  "nav_leaderboard": "Leaderboard"
+  "nav_leaderboard": "Leaderboard",
+  "category_roads": "Roads",
+  "category_waste": "Waste Management",
+  "category_infrastructure": "Infrastructure",
+  "category_street_lighting": "Street Lighting",
+  "category_water_sewage": "Water & Sewage",
+  "category_vandalism": "Vandalism",
+  "category_health_sanitation": "Public Health & Sanitation",
+  "category_parks_green": "Parks & Green Spaces",
+  "category_encroachments": "Encroachments",
+  "category_noise_air_pollution": "Noise & Air Pollution",
+  "category_flooding_drainage": "Flooding & Drainage",
+  "category_traffic_parking": "Traffic & Parking Issues",
+  "category_electricity_power": "Electricity & Power Supply",
+  "category_public_transport": "Public Transport & Bus Stops",
+  "category_drinking_water": "Drinking Water Quality"
 }
 

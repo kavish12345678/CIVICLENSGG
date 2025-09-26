@@ -33,6 +33,21 @@
   "nav_reports": "मेरी रिपोर्ट",
   "nav_map": "मानचित्र",
   "nav_impact": "मेरा प्रभाव",
-  "nav_leaderboard": "लीडरबोर्ड"
+  "nav_leaderboard": "लीडरबोर्ड",
+  "category_roads": "सड़कें",
+  "category_waste": "कचरा प्रबंधन",
+  "category_infrastructure": "बुनियादी ढांचा",
+  "category_street_lighting": "सड़क प्रकाश",
+  "category_water_sewage": "जल और सीवेज",
+  "category_vandalism": "वैंडलिज्म",
+  "category_health_sanitation": "सार्वजनिक स्वास्थ्य और स्वच्छता",
+  "category_parks_green": "पार्क और हरित स्थान",
+  "category_encroachments": "अतिक्रमण",
+  "category_noise_air_pollution": "शोर और वायु प्रदूषण",
+  "category_flooding_drainage": "बाढ़ और जल निकासी",
+  "category_traffic_parking": "ट्रैफिक और पार्किंग समस्याएं",
+  "category_electricity_power": "बिजली और पावर सप्लाई",
+  "category_public_transport": "सार्वजनिक परिवहन और बस स्टॉप",
+  "category_drinking_water": "पीने का पानी गुणवत्ता"
 }
 

@@ -33,6 +33,21 @@
   "nav_reports": "నా రిపోర్ట్స్",
   "nav_map": "మ్యాప్",
   "nav_impact": "నా ప్రభావం",
-  "nav_leaderboard": "లీడర్‌బోర్డ్"
+  "nav_leaderboard": "లీడర్‌బోర్డ్",
+  "category_roads": "రోడ్లు",
+  "category_waste": "వేస్ట్ మేనేజ్‌మెంట్",
+  "category_infrastructure": "ఇన్‌ఫ్రాస్ట్రక్చర్",
+  "category_street_lighting": "స్ట్రీట్ లైటింగ్",
+  "category_water_sewage": "వాటర్ & సెవేజ్",
+  "category_vandalism": "వాండలిజం",
+  "category_health_sanitation": "పబ్లిక్ హెల్త్ & సానిటేషన్",
+  "category_parks_green": "పార్కులు & గ్రీన్ స్పేస్‌లు",
+  "category_encroachments": "ఎన్‌క్రోచ్‌మెంట్‌లు",
+  "category_noise_air_pollution": "నాయిస్ & ఎయిర్ పొల్యూషన్",
+  "category_flooding_drainage": "ఫ్లడింగ్ & డ్రైనేజ్",
+  "category_traffic_parking": "ట్రాఫిక్ & పార్కింగ్ ఇష్యూస్",
+  "category_electricity_power": "ఎలక్ట్రిసిటీ & పవర్ సప్లై",
+  "category_public_transport": "పబ్లిక్ ట్రాన్స్‌పోర్ట్ & బస్ స్టాప్‌లు",
+  "category_drinking_water": "డ్రింకింగ్ వాటర్ క్వాలిటీ"
 }
 

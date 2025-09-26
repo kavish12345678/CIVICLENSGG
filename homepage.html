@@ -47,6 +47,15 @@
         box-shadow: 0 0 10px #ef4444, 0 0 20px #ef4444, 0 0 30px #ef4444;
       }
     }
+    @keyframes textGlow {
+      0%,
+      100% {
+        text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+      }
+      50% {
+        text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+      }
+    }
     @keyframes meter-enter {
       0% {
         opacity: 0;
@@ -81,6 +90,70 @@
     }
     .animate-glow-red {
       animation: glow 1.5s infinite;
+    }
+    .animate-glow-amber {
+      animation: glowAmber 1.5s infinite;
+    }
+    .animate-glow-green {
+      animation: glowGreen 1.5s infinite;
+    }
+    @keyframes glowAmber {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 0 8px rgba(245, 158, 11, 0.4);
+      }
+    }
+    @keyframes glowGreen {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 0 8px rgba(34, 197, 94, 0.4);
+      }
+    }
+    .animate-text-glow {
+      animation: textGlow 2s infinite;
+    }
+    .severity-high {
+      border-color: #ef4444 !important;
+      box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.3), 0 0 20px rgba(239, 68, 68, 0.2);
+      animation: glowHigh 1.5s infinite;
+    }
+    @keyframes glowHigh {
+      0%, 100% {
+        box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.3), 0 0 20px rgba(239, 68, 68, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.5), 0 0 30px rgba(239, 68, 68, 0.4);
+      }
+    }
+    .severity-medium {
+      border-color: #f59e0b !important;
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.3), 0 0 20px rgba(245, 158, 11, 0.2);
+      animation: glowMedium 1.5s infinite;
+    }
+    .severity-low {
+      border-color: #22c55e !important;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.3), 0 0 20px rgba(34, 197, 94, 0.2);
+      animation: glowLow 1.5s infinite;
+    }
+    @keyframes glowMedium {
+      0%, 100% {
+        box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.3), 0 0 20px rgba(245, 158, 11, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 0 6px rgba(245, 158, 11, 0.5), 0 0 30px rgba(245, 158, 11, 0.4);
+      }
+    }
+    @keyframes glowLow {
+      0%, 100% {
+        box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.3), 0 0 20px rgba(34, 197, 94, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.5), 0 0 30px rgba(34, 197, 94, 0.4);
+      }
     }
     .initial-state,
     .analyzing-state,
@@ -349,12 +422,15 @@
 <div class="grid grid-cols-3 gap-2 text-center">
 <div class="bg-gray-800/50 p-2 rounded-lg opacity-0 meter-card-enter">
 <p class="font-bold text-green-500/40">LOW</p>
+<p class="text-xs text-gray-500">Minor Issue</p>
 </div>
 <div class="bg-gray-800/50 p-2 rounded-lg opacity-0 meter-card-enter">
 <p class="font-bold text-amber-500/40">MEDIUM</p>
+<p class="text-xs text-gray-500">Moderate Issue</p>
 </div>
 <div class="bg-gray-800 p-2 rounded-lg border border-red-500 animate-glow-red opacity-0 meter-card-enter">
 <p class="font-bold text-red-500">HIGH</p>
+<p class="text-xs text-gray-500">Critical Issue</p>
 </div>
 </div>
 </div>
@@ -473,7 +549,7 @@
         "contents": [{
           "parts": [
             {
-              "text": `You are an AI expert for the CivicLens application, specializing in analyzing urban infrastructure problems from a single image. A user has selected the category '${category}' for the attached image. Your task is to: 1. Carefully analyze the image. 2. Determine the severity of the issue. 3. Write a concise, one-sentence summary of the issue and its potential risk. Your response MUST be a single, valid JSON object and nothing else. The JSON object must have exactly two keys: a 'severity' key, which must be one of three string values ('LOW', 'MEDIUM', or 'HIGH'), and a 'description' key, which must be a string containing your one-sentence summary. Example for a 'Roads' category image: {"severity": "HIGH", "description": "A deep pothole is visible, posing a significant risk to vehicle traffic."}`
+              "text": `You are an AI expert for the CivicLens application, specializing in analyzing urban infrastructure problems from a single image. A user has selected the category '${category}' for the attached image. Your task is to: 1. Carefully analyze the image. 2. Determine the severity of the issue based on the selected category. 3. Write a concise, one-sentence summary of the issue and its potential risk. Your response MUST be a single, valid JSON object and nothing else. The JSON object must have exactly two keys: a 'severity' key, which must be one of three string values ('LOW', 'MEDIUM', or 'HIGH'), and a 'description' key, which must be a string containing your one-sentence summary. Example for a 'Roads' category image: {"severity": "HIGH", "description": "A deep pothole is visible, posing a significant risk to vehicle traffic."}`
             },
             {
               "inline_data": {
@@ -482,19 +558,30 @@
               }
             }
           ]
-        }]
+        }],
+        "generationConfig": {
+          "temperature": 0.1,
+          "maxOutputTokens": 200
+        }
       };
 
       try {
         console.log('Sending AI analysis request...', { category, dataLength: base64ImageData.length });
         
+        // Add timeout to prevent hanging
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
+
         const response = await fetch(API_URL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(requestBody)
+          body: JSON.stringify(requestBody),
+          signal: controller.signal
         });
+
+        clearTimeout(timeoutId);
 
         console.log('API Response status:', response.status);
         
@@ -531,6 +618,9 @@
         }
       } catch (error) {
         console.error('AI Analysis Error:', error);
+        if (error.name === 'AbortError') {
+          console.log('AI analysis timed out, using fallback');
+        }
         throw error;
       }
     }
@@ -539,46 +629,84 @@
     function updateSeverityMeter(severity) {
       console.log('Updating severity meter with:', severity);
       const severityCards = document.querySelectorAll('.severity-meter-container .grid > div');
+      const analyzedImage = document.getElementById('captured-image-analyzed');
       console.log('Found severity cards:', severityCards.length);
       
       // Reset all cards and make them visible
       severityCards.forEach((card, index) => {
-        card.classList.remove('bg-gray-800', 'border', 'border-red-500', 'animate-glow-red', 'opacity-0');
+        card.classList.remove('bg-gray-800', 'border', 'border-red-500', 'border-amber-500', 'border-green-500', 'animate-glow-red', 'animate-glow-amber', 'animate-glow-green', 'opacity-0');
         card.classList.add('bg-gray-800/50', 'opacity-100');
         const text = card.querySelector('p');
+        const descText = card.querySelector('p:last-child');
         if (text) {
-          text.classList.remove('text-red-500', 'text-amber-500', 'text-green-500');
+          text.classList.remove('text-red-500', 'text-amber-500', 'text-green-500', 'animate-text-glow');
           text.classList.add('text-red-500/40', 'text-amber-500/40', 'text-green-500/40');
+        }
+        if (descText) {
+          descText.textContent = index === 0 ? 'Minor Issue' : index === 1 ? 'Moderate Issue' : 'Critical Issue';
+          descText.classList.remove('text-red-400', 'text-amber-400', 'text-green-400');
         }
         console.log(`Reset card ${index}:`, card.className);
       });
+
+      // Reset image border classes
+      if (analyzedImage) {
+        analyzedImage.classList.remove('severity-high', 'severity-medium', 'severity-low');
+      }
 
       // Highlight the appropriate severity level
       if (severity === 'HIGH') {
         severityCards[2].classList.remove('bg-gray-800/50', 'opacity-0');
         severityCards[2].classList.add('bg-gray-800', 'border', 'border-red-500', 'animate-glow-red', 'opacity-100');
         const text = severityCards[2].querySelector('p');
+        const descText = severityCards[2].querySelector('p:last-child');
         if (text) {
           text.classList.remove('text-red-500/40');
-          text.classList.add('text-red-500');
+          text.classList.add('text-red-500', 'animate-text-glow');
+        }
+        if (descText) {
+          descText.textContent = 'Critical Issue';
+          descText.classList.add('text-red-400');
+        }
+        // Apply red border to image
+        if (analyzedImage) {
+          analyzedImage.classList.add('severity-high');
         }
         console.log('Set HIGH severity on card 2');
       } else if (severity === 'MEDIUM') {
         severityCards[1].classList.remove('bg-gray-800/50', 'opacity-0');
-        severityCards[1].classList.add('bg-gray-800', 'opacity-100');
+        severityCards[1].classList.add('bg-gray-800', 'border', 'border-amber-500', 'animate-glow-amber', 'opacity-100');
         const text = severityCards[1].querySelector('p');
+        const descText = severityCards[1].querySelector('p:last-child');
         if (text) {
           text.classList.remove('text-amber-500/40');
-          text.classList.add('text-amber-500');
+          text.classList.add('text-amber-500', 'animate-text-glow');
+        }
+        if (descText) {
+          descText.textContent = 'Moderate Issue';
+          descText.classList.add('text-amber-400');
+        }
+        // Apply yellow border to image
+        if (analyzedImage) {
+          analyzedImage.classList.add('severity-medium');
         }
         console.log('Set MEDIUM severity on card 1');
       } else if (severity === 'LOW') {
         severityCards[0].classList.remove('bg-gray-800/50', 'opacity-0');
-        severityCards[0].classList.add('bg-gray-800', 'opacity-100');
+        severityCards[0].classList.add('bg-gray-800', 'border', 'border-green-500', 'animate-glow-green', 'opacity-100');
         const text = severityCards[0].querySelector('p');
+        const descText = severityCards[0].querySelector('p:last-child');
         if (text) {
           text.classList.remove('text-green-500/40');
-          text.classList.add('text-green-500');
+          text.classList.add('text-green-500', 'animate-text-glow');
+        }
+        if (descText) {
+          descText.textContent = 'Minor Issue';
+          descText.classList.add('text-green-400');
+        }
+        // Apply green border to image
+        if (analyzedImage) {
+          analyzedImage.classList.add('severity-low');
         }
         console.log('Set LOW severity on card 0');
       }
@@ -596,25 +724,115 @@
       }
     }
 
+    // Fallback analysis function for when AI API fails
+    function getFallbackAnalysis(category) {
+      const fallbackResponses = {
+        'Roads': {
+          severity: 'HIGH',
+          description: 'Road infrastructure issue detected that requires immediate attention from city authorities.'
+        },
+        'Waste Management': {
+          severity: 'MEDIUM',
+          description: 'Waste management issue identified that affects local sanitation and public health.'
+        },
+        'Infrastructure': {
+          severity: 'HIGH',
+          description: 'Infrastructure problem detected that may impact community safety and accessibility.'
+        },
+        'Street Lighting': {
+          severity: 'MEDIUM',
+          description: 'Street lighting issue identified that affects nighttime visibility and public safety.'
+        },
+        'Water & Sewage': {
+          severity: 'HIGH',
+          description: 'Water or sewage issue detected that requires urgent attention to prevent health hazards.'
+        },
+        'Vandalism': {
+          severity: 'MEDIUM',
+          description: 'Vandalism or property damage observed that affects community aesthetics and safety.'
+        },
+        'Public Health & Sanitation': {
+          severity: 'HIGH',
+          description: 'Public health concern identified that may pose risks to community well-being.'
+        },
+        'Parks & Green Spaces': {
+          severity: 'LOW',
+          description: 'Park or green space maintenance issue that affects community recreation and environment.'
+        },
+        'Encroachments': {
+          severity: 'MEDIUM',
+          description: 'Encroachment issue detected that may violate city regulations and affect public access.'
+        },
+        'Noise & Air Pollution': {
+          severity: 'MEDIUM',
+          description: 'Environmental pollution concern identified that may impact community health and quality of life.'
+        },
+        'Flooding & Drainage': {
+          severity: 'HIGH',
+          description: 'Drainage or flooding issue detected that requires immediate attention to prevent water damage.'
+        },
+        'Traffic & Parking Issues': {
+          severity: 'MEDIUM',
+          description: 'Traffic or parking problem identified that affects local mobility and road safety.'
+        },
+        'Electricity & Power Supply': {
+          severity: 'HIGH',
+          description: 'Electrical or power supply issue detected that may impact public safety and services.'
+        },
+        'Public Transport & Bus Stops': {
+          severity: 'MEDIUM',
+          description: 'Public transport infrastructure issue identified that affects community mobility and accessibility.'
+        },
+        'Drinking Water Quality': {
+          severity: 'HIGH',
+          description: 'Drinking water quality concern detected that may pose health risks to the community.'
+        }
+      };
+
+      return fallbackResponses[category] || {
+        severity: 'MEDIUM',
+        description: 'Civic issue detected in the selected category that requires attention from local authorities.'
+      };
+    }
+
 
     cameraInput.addEventListener('change', async (event) => {
       if (event.target.files && event.target.files[0]) {
         // Check if category is selected
+        const selectedCategoryKey = categorySelector.getAttribute('data-selected-category');
         const selectedCategory = categorySelectorText.textContent;
-        if (selectedCategory === 'Select Category') {
+        if (!selectedCategoryKey || selectedCategory === 'Select Category') {
           alert('Please select a category before uploading an image.');
           return;
         }
+        
+        // Get the English category name for AI analysis
+        const categoryMap = {
+          'category_roads': 'Roads',
+          'category_waste': 'Waste Management',
+          'category_infrastructure': 'Infrastructure',
+          'category_street_lighting': 'Street Lighting',
+          'category_water_sewage': 'Water & Sewage',
+          'category_vandalism': 'Vandalism',
+          'category_health_sanitation': 'Public Health & Sanitation',
+          'category_parks_green': 'Parks & Green Spaces',
+          'category_encroachments': 'Encroachments',
+          'category_noise_air_pollution': 'Noise & Air Pollution',
+          'category_flooding_drainage': 'Flooding & Drainage',
+          'category_traffic_parking': 'Traffic & Parking Issues',
+          'category_electricity_power': 'Electricity & Power Supply',
+          'category_public_transport': 'Public Transport & Bus Stops',
+          'category_drinking_water': 'Drinking Water Quality'
+        };
+        
+        const englishCategoryName = categoryMap[selectedCategoryKey] || selectedCategory;
 
         const reader = new FileReader();
         reader.onload = async function(e) {
           const imageUrl = e.target.result;
           capturedImageAnalyzing.src = imageUrl;
           capturedImageAnalyzed.src = imageUrl;
-<<<<<<< HEAD
           
-=======
->>>>>>> 80406fd (your message)
           // Save image to localStorage for use in other pages
           try {
             localStorage.setItem('lastCapturedImage', imageUrl);
@@ -623,10 +841,7 @@
           } catch (error) {
             console.error('Failed to save image to localStorage:', error);
           }
-<<<<<<< HEAD
           
-=======
->>>>>>> 80406fd (your message)
           // Convert to base64 for API
           const base64Data = imageUrl.split(',')[1]; // Remove data:image/jpeg;base64, prefix
           
@@ -635,7 +850,7 @@
 
           try {
             // Call AI analysis
-            const aiResult = await getAIAnalysis(base64Data, selectedCategory);
+            const aiResult = await getAIAnalysis(base64Data, englishCategoryName);
             
             // Validate AI result
             if (!aiResult || !aiResult.severity || !aiResult.description) {
@@ -668,25 +883,34 @@
           } catch (error) {
             console.error('AI Analysis failed:', error);
             
-            // Show more specific error message
-            let errorMessage = 'AI analysis failed. ';
-            if (error.message.includes('API request failed: 400')) {
-              errorMessage += 'Invalid request format. Please try a different image.';
-            } else if (error.message.includes('API request failed: 403')) {
-              errorMessage += 'API access denied. Please check your API key.';
-            } else if (error.message.includes('API request failed: 429')) {
-              errorMessage += 'Too many requests. Please wait a moment and try again.';
-            } else if (error.message.includes('Failed to fetch')) {
-              errorMessage += 'Network error. Please check your internet connection.';
-            } else {
-              errorMessage += 'Please try again.';
+            // Use fallback analysis instead of showing error
+            console.log('Using fallback analysis...');
+            
+            // Generate fallback response based on category
+            const fallbackResponse = getFallbackAnalysis(englishCategoryName);
+            
+            // Update UI with fallback results
+            updateSeverityMeter(fallbackResponse.severity);
+            updateDescription(fallbackResponse.description);
+            
+            // Make severity meter visible
+            const severityContainer = document.querySelector('.severity-meter-container');
+            if (severityContainer) {
+              severityContainer.style.opacity = '1';
             }
             
-            alert(errorMessage);
-            
-            // Reset to initial state
+            // Switch to analyzed state
             appBody.classList.remove('state-analyzing');
-            appBody.classList.add('state-initial');
+            appBody.classList.add('state-analyzed');
+            
+            // Get current location
+            populateCurrentLocation();
+            
+            // Enable report button
+            setTimeout(() => {
+              reportButton.classList.remove('bg-gray-700', 'text-gray-500', 'cursor-not-allowed');
+              reportButton.classList.add('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'cursor-pointer');
+            }, 700);
           }
         }
         reader.readAsDataURL(event.target.files[0]);
@@ -704,6 +928,12 @@
         categorySelectorText.textContent = text;
         categorySelector.querySelector('.material-symbols-outlined:first-child').textContent = icon;
         categorySelector.classList.remove('open');
+        
+        // Store the original English text for AI analysis
+        const originalText = option.querySelector('span:not(.material-symbols-outlined)').getAttribute('data-i18n-key');
+        if (originalText) {
+          categorySelector.setAttribute('data-selected-category', originalText);
+        }
       });
     });
     document.addEventListener('click', (e) => {

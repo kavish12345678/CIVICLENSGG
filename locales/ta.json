@@ -33,6 +33,21 @@
   "nav_reports": "என் அறிக்கைகள்",
   "nav_map": "வரைபடம்",
   "nav_impact": "என் தாக்கம்",
-  "nav_leaderboard": "லீடர்போர்டு"
+  "nav_leaderboard": "லீடர்போர்டு",
+  "category_roads": "சாலைகள்",
+  "category_waste": "கழிவு மேலாண்மை",
+  "category_infrastructure": "உள்கட்டமைப்பு",
+  "category_street_lighting": "தெரு விளக்கு",
+  "category_water_sewage": "நீர் மற்றும் கழிவுநீர்",
+  "category_vandalism": "சேதம்",
+  "category_health_sanitation": "பொது சுகாதாரம் மற்றும் சுகாதாரம்",
+  "category_parks_green": "பூங்காக்கள் மற்றும் பசுமை இடங்கள்",
+  "category_encroachments": "கைப்பற்றுதல்",
+  "category_noise_air_pollution": "சப்தம் மற்றும் காற்று மாசு",
+  "category_flooding_drainage": "வெள்ளம் மற்றும் வடிகால்",
+  "category_traffic_parking": "போக்குவரத்து மற்றும் நிறுத்துமிடம் பிரச்சனைகள்",
+  "category_electricity_power": "மின்சாரம் மற்றும் மின்சார விநியோகம்",
+  "category_public_transport": "பொது போக்குவரத்து மற்றும் பஸ் நிறுத்தங்கள்",
+  "category_drinking_water": "குடிநீர் தரம்"
 }
 

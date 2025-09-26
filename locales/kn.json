@@ -33,6 +33,21 @@
   "nav_reports": "ನನ್ನ ವರದಿಗಳು",
   "nav_map": "ನಕ್ಷೆ",
   "nav_impact": "ನನ್ನ ಪ್ರಭಾವ",
-  "nav_leaderboard": "ಲೀಡರ್ಬೋರ್ಡ್"
+  "nav_leaderboard": "ಲೀಡರ್ಬೋರ್ಡ್",
+  "category_roads": "ರಸ್ತೆಗಳು",
+  "category_waste": "ತ್ಯಾಜ್ಯ ನಿರ್ವಹಣೆ",
+  "category_infrastructure": "ಮೂಲಸೌಕರ್ಯ",
+  "category_street_lighting": "ರಸ್ತೆ ದೀಪಗಳು",
+  "category_water_sewage": "ನೀರು ಮತ್ತು ಚರಂಡಿ",
+  "category_vandalism": "ವಂಡಲಿಸಂ",
+  "category_health_sanitation": "ಸಾರ್ವಜನಿಕ ಆರೋಗ್ಯ ಮತ್ತು ಸ್ವಚ್ಛತೆ",
+  "category_parks_green": "ಉದ್ಯಾನಗಳು ಮತ್ತು ಹಸಿರು ಸ್ಥಳಗಳು",
+  "category_encroachments": "ಅತಿಕ್ರಮಣ",
+  "category_noise_air_pollution": "ಶಬ್ದ ಮತ್ತು ವಾಯು ಮಾಲಿನ್ಯ",
+  "category_flooding_drainage": "ವೈಪರೀತ್ಯ ಮತ್ತು ಜಲದಾನ",
+  "category_traffic_parking": "ಟ್ರಾಫಿಕ್ ಮತ್ತು ಪಾರ್ಕಿಂಗ್ ಸಮಸ್ಯೆಗಳು",
+  "category_electricity_power": "ವಿದ್ಯುತ್ ಮತ್ತು ಪವರ್ ಸಪ್ಲೈ",
+  "category_public_transport": "ಸಾರ್ವಜನಿಕ ಸಾರಿಗೆ ಮತ್ತು ಬಸ್ ನಿಲ್ದಾಣಗಳು",
+  "category_drinking_water": "ಕುಡಿಯುವ ನೀರಿನ ಗುಣಮಟ್ಟ"
 }
 

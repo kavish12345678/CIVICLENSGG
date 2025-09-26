@@ -33,6 +33,21 @@
   "nav_reports": "আমার রিপোর্ট",
   "nav_map": "মানচিত্র",
   "nav_impact": "আমার প্রভাব",
-  "nav_leaderboard": "লিডারবোর্ড"
+  "nav_leaderboard": "লিডারবোর্ড",
+  "category_roads": "রাস্তা",
+  "category_waste": "বর্জ্য ব্যবস্থাপনা",
+  "category_infrastructure": "অবকাঠামো",
+  "category_street_lighting": "রাস্তার আলো",
+  "category_water_sewage": "জল ও পয়ঃনিষ্কাশন",
+  "category_vandalism": "ধ্বংসাত্মক কার্য",
+  "category_health_sanitation": "জনস্বাস্থ্য ও স্যানিটেশন",
+  "category_parks_green": "পার্ক ও সবুজ স্থান",
+  "category_encroachments": "অবৈধ দখল",
+  "category_noise_air_pollution": "শব্দ ও বায়ু দূষণ",
+  "category_flooding_drainage": "বন্যা ও নিষ্কাশন",
+  "category_traffic_parking": "ট্র্যাফিক ও পার্কিং সমস্যা",
+  "category_electricity_power": "বিদ্যুৎ ও পাওয়ার সাপ্লাই",
+  "category_public_transport": "পাবলিক ট্রান্সপোর্ট ও বাস স্টপ",
+  "category_drinking_water": "পানীয় জলের গুণমান"
 }
 
